@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
 const connectToDatabase = async () => {
+  const connectionString = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@cluster0.aepcj.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/todo-app", {
+    await mongoose.connect(connectionString, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

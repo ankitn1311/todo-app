@@ -4,9 +4,9 @@ const User = require("../models/Users");
 
 router.post("/register", async (req, res) => {
   try {
-    const name = "ankit";
-    const email = "ankitn1331@gmail.com";
-    const password = "ankitnegi";
+    const name = "himanshu";
+    const email = "himanshu123@gmail.com";
+    const password = "himanshu";
     new User({ name, email, password }).save();
     res.status(203).send({
       success: true,
