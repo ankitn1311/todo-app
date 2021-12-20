@@ -19,3 +19,9 @@ Todo app using MERN stack
   - formik
   - headlessui
   - yup
+
+* Tools
+  - vscode
+  - vim
+  - atlas
+  - redux-dev-tools
