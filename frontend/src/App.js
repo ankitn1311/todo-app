@@ -18,7 +18,10 @@ function App() {
           }
         />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="about" element={<div>Hello from about</div>} />
+        <Route path="about" element={
+          <Layout sidebar={true}>
+            <div>Hello from About</div>
+          </Layout>} />
       </Routes>
     </div>
   );
