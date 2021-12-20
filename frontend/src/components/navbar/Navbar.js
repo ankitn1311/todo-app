@@ -8,11 +8,11 @@ const Navbar = () => {
   let location = useLocation();
   const { pathname } = location;
   const dispatch = useDispatch();
-  const {darkMode} = useSelector((state)=> state.dark)
+  const { darkMode } = useSelector((state) => state.dark);
   console.log({ pathname });
 
   const toggleDarkMode = () => {
-     dispatch(toggleDark())
+    dispatch(toggleDark());
   };
 
   useEffect(() => {
@@ -38,6 +38,12 @@ const Navbar = () => {
             pathname === "/sign-up" && "text-green-500"
           }`}>
           <Link to="/sign-up">Sign Up</Link>
+        </li>
+        <li
+          className={`hover:text-pink-500 ${
+            pathname === "/login" && "text-green-500"
+          }`}>
+          <Link to="/login">Login</Link>
         </li>
         <li
           className={`hover:text-pink-500 ${
