@@ -14,6 +14,7 @@ function App() {
         <Route path="about" element={<div>Hello from about</div>} />
       </Routes>
     </div>
+
   );
 }
 
