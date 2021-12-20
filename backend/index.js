@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const todoRoute = require('./routes/todo');
 require("./database");
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use("/api/", authRoute);
 app.use("/api/", userRoute);
+app.use("/api/", todoRoute)
 
 app.listen(PORT, () => {
   console.log("Server running on port ", PORT);
