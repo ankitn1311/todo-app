@@ -2,8 +2,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import Layout from "../layout/Layout";
-
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../redux/actions/auth";
 const SignUp = () => {
+  const  dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -26,6 +28,8 @@ const SignUp = () => {
     onSubmit: (values) => {
       console.log({ values });
       const { confirmPassword, name, email, password } = values;
+      const data = {name, email, password}
+      dispatch(registerUser(data))
     },
   });
   return (

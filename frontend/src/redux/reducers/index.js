@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux'
 import auth  from './auth'
-
-export default combineReducers({auth})
+import dark from './darkMode'
+export default combineReducers({auth, dark})

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
 import { Switch } from "@headlessui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleDark } from "../../redux/actions/darkMode";
 
 const Navbar = () => {
   let location = useLocation();
   const { pathname } = location;
+  const dispatch = useDispatch();
+  const {darkMode} = useSelector((state)=> state.dark)
   console.log({ pathname });
 
-  const [darkMode, setDarkMode] = useState(false);
-
   const toggleDarkMode = () => {
-    setDarkMode((prev) => !prev);
+     dispatch(toggleDark())
   };
 
   useEffect(() => {
