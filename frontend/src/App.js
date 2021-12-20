@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout";
 
-import Navbar from "./components/navbar/Navbar";
+import Layout from "./components/layout/Layout";
+import Login from "./components/login/Login";
 import SignUp from "./components/sign-up/SignUp";
 
 function App() {
@@ -18,10 +18,15 @@ function App() {
           }
         />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="about" element={
-          <Layout sidebar={true}>
-            <div>Hello from About</div>
-          </Layout>} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="about"
+          element={
+            <Layout sidebar={true}>
+              <div>Hello from About</div>
+            </Layout>
+          }
+        />
       </Routes>
     </div>
   );
