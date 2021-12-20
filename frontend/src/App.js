@@ -7,7 +7,7 @@ import SignUp from "./components/sign-up/SignUp";
 
 function App() {
   return (
-    <div className="h-screen bg-slate-100 dark:bg-slate-800 text-gray-800 dark:text-gray-300 ">
+    <div className="h-screen bg-slate-200 dark:bg-slate-800 text-gray-800 dark:text-gray-300 ">
       <Routes>
         <Route
           path="/"
