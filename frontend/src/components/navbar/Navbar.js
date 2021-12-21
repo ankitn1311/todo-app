@@ -43,25 +43,25 @@ const Navbar = () => {
         <ul className="p-3 flex items-center gap-5 ">
           <li
             className={`hover:text-teal-400 ${
-              pathname === "/" && "text-teal-500"
+              pathname === "/" && "text-teal-600 dark:text-teal-500"
             }`}>
             <Link to="/">Home</Link>
           </li>
           <li
             className={`hover:text-teal-400 ${
-              pathname === "/sign-up" && "text-teal-500"
+              pathname === "/sign-up" && "text-teal-600 dark:text-teal-500"
             }`}>
             <Link to="/sign-up">Sign Up</Link>
           </li>
           <li
             className={`hover:text-teal-400 ${
-              pathname === "/login" && "text-teal-500"
+              pathname === "/login" && "text-teal-600 dark:text-teal-500"
             }`}>
             <Link to="/login">Login</Link>
           </li>
           <li
             className={`hover:text-teal-400 ${
-              pathname === "/about" && "text-teal-500"
+              pathname === "/about" && "text-teal-600 dark:text-teal-500"
             }`}>
             <Link to="/about">About</Link>
           </li>

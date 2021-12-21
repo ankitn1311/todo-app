@@ -44,7 +44,11 @@ const SignUp = () => {
             className="flex flex-col gap-8 w-96"
             onSubmit={formik.handleSubmit}>
             <div className="flex flex-col gap-1 font-semibold items-start justify-between">
-              <label htmlFor="firstName">Name</label>
+              <label
+                htmlFor="firstName"
+                className="text-teal-700 dark:text-teal-500">
+                Name
+              </label>
               <Input
                 placeholder="Enter your name"
                 id="name"
@@ -58,7 +62,11 @@ const SignUp = () => {
               />
             </div>
             <div className="flex flex-col gap-1 font-semibold items-start justify-between ">
-              <label htmlFor="email">Email Address</label>
+              <label
+                htmlFor="email"
+                className="text-teal-700 dark:text-teal-500">
+                Email Address
+              </label>
               <Input
                 placeholder="@gmail.com"
                 id="email"
@@ -72,7 +80,11 @@ const SignUp = () => {
               />
             </div>
             <div className="flex flex-col gap-1 font-semibold items-start justify-between">
-              <label htmlFor="email">Password</label>
+              <label
+                htmlFor="email"
+                className="text-teal-700 dark:text-teal-500">
+                Password
+              </label>
 
               <Input
                 placeholder="password"
@@ -87,7 +99,11 @@ const SignUp = () => {
               />
             </div>
             <div className="flex flex-col gap-1 font-semibold items-start justify-between">
-              <label htmlFor="email">Confirm Password</label>
+              <label
+                htmlFor="email"
+                className="text-teal-700 dark:text-teal-500">
+                Confirm Password
+              </label>
 
               <Input
                 placeholder="confirm password"
