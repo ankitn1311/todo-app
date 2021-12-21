@@ -5,7 +5,8 @@ import Layout from "../layout/Layout";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/actions/auth";
 
-import Input from "../common/input/Input";
+import Input from "../common/form/Input";
+import Paper from "../common/ui/Paper";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -38,113 +39,80 @@ const SignUp = () => {
   return (
     <Layout sidebar={false}>
       <div className="h-full flex items-center justify-center">
-        <form
-          className="flex flex-col gap-2 w-96"
-          onSubmit={formik.handleSubmit}
-        >
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="firstName">Name</label>
-            <div className="relative">
+        <Paper className="p-10 rounded-lg shadow-xl">
+          <form
+            className="flex flex-col gap-8 w-96"
+            onSubmit={formik.handleSubmit}>
+            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+              <label htmlFor="firstName">Name</label>
               <Input
-                placeholder={"Enter your name"}
-                id={"name"}
-                name={"name"}
-                type={"text"}
+                placeholder="Enter your name"
+                id="name"
+                name="name"
+                type="text"
+                width="full"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
+                formik={formik}
               />
-              {formik.touched.name && formik.errors.name ? (
-                <>
-                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
-                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
-                    {formik.errors.name}
-                  </div>
-                </>
-              ) : null}
             </div>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="email">Email Address</label>
-            <div className="relative">
+            <div className="flex flex-col gap-1 font-semibold items-start justify-between ">
+              <label htmlFor="email">Email Address</label>
               <Input
-                placeholder={"@gmail.com"}
-                id={"email"}
-                name={"email"}
-                type={"email"}
+                placeholder="@gmail.com"
+                id="email"
+                name="email"
+                type="email"
+                width="full"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
+                formik={formik}
               />
-
-              {formik.touched.email && formik.errors.email ? (
-                <>
-                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
-                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
-                    {formik.errors.email}
-                  </div>
-                </>
-              ) : null}
             </div>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="email">Password</label>
-            <div className="relative">
+            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+              <label htmlFor="email">Password</label>
+
               <Input
-                placeholder={"password"}
-                id={"password"}
-                name={"password"}
-                type={"text"}
+                placeholder="password"
+                id="password"
+                name="password"
+                type="text"
+                width="full"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
+                formik={formik}
               />
-              {formik.touched.password && formik.errors.password ? (
-                <>
-                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
-                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
-                    {formik.errors.password}
-                  </div>
-                </>
-              ) : null}
             </div>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="email">Confirm Password</label>
-            <div className="relative">
+            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+              <label htmlFor="email">Confirm Password</label>
+
               <Input
-                placeholder={"confirm password"}
-                id={"confirmPassword"}
-                name={"confirmPassword"}
-                type={"text"}
+                placeholder="confirm password"
+                id="confirmPassword"
+                name="confirmPassword"
+                width="full"
+                type="text"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
+                formik={formik}
               />
-              {formik.touched.confirmPassword &&
-              formik.errors.confirmPassword ? (
-                <>
-                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
-                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
-                    {formik.errors.confirmPassword}
-                  </div>
-                </>
-              ) : null}
             </div>
-          </div>
 
-          <div className="">
-            <button
-              className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
-              type="submit"
-            >
-              Sign Up
-            </button>
-          </div>
-        </form>
+            <div className="w-full flex items-center justify-center">
+              <button
+                className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
+                type="submit">
+                Sign Up
+              </button>
+            </div>
+          </form>
+        </Paper>
       </div>
     </Layout>
   );
 };
-
 export default SignUp;

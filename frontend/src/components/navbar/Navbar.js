@@ -24,7 +24,7 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <nav className="bg-slate-100 dark:bg-slate-700 p-4 flex flex-row gap-10 items-center font-poppins">
+    <nav className="bg-slate-300  dark:bg-slate-800 p-4 flex flex-row gap-10 items-center font-poppins">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-10 w-10 text-teal-600 "
@@ -70,13 +70,13 @@ const Navbar = () => {
           checked={darkMode}
           onChange={toggleDarkMode}
           className={`${
-            darkMode ? "bg-blue-600" : "bg-gray-200"
+            darkMode ? "bg-teal-400" : "bg-gray-800"
           } relative inline-flex items-center h-6 rounded-full w-11`}>
           <span className="sr-only">Enable dark mode</span>
           <span
             className={`${
               darkMode ? "translate-x-6" : "translate-x-1"
-            } inline-block w-4 h-4 transform bg-white rounded-full`}
+            } inline-block w-4 h-4 transform bg-teal-600 rounded-full`}
           />
         </Switch>
       </div>
