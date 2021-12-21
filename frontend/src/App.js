@@ -7,7 +7,7 @@ import SignUp from "./components/sign-up/SignUp";
 
 function App() {
   return (
-    <div className="h-screen bg-slate-400 dark:bg-slate-900 text-gray-900 dark:text-gray-400 ">
+    <div className="h-screen bg-slate-400 dark:bg-slate-900 text-gray-900 dark:text-gray-400 dark:bg-[url('./assets/images/background.jpg')] object-cover">
       <Routes>
         <Route
           path="/"

@@ -9,7 +9,7 @@ const Paper = (props) => {
   return (
     <div
       //dark:ring-1 dark:ring-inset dark:ring-white/10
-      className={`bg-slate-300 dark:bg-slate-800  ${props.className}`}>
+      className={`bg-slate-300 dark:bg-slate-800/70 backdrop-blur ${props.className}`}>
       {children}
     </div>
   );
