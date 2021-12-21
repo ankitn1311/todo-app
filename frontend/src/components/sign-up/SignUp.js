@@ -5,6 +5,8 @@ import Layout from "../layout/Layout";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/actions/auth";
 
+import Input from "../common/input/Input";
+
 const SignUp = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -38,74 +40,104 @@ const SignUp = () => {
       <div className="h-full flex items-center justify-center">
         <form
           className="flex flex-col gap-2 w-96"
-          onSubmit={formik.handleSubmit}>
+          onSubmit={formik.handleSubmit}
+        >
           <div className="flex flex-row items-center justify-between">
             <label htmlFor="firstName">Name</label>
-            <div className="">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                className="text-green-800 px-4 py-2"
+            <div className="relative">
+              <Input
+                placeholder={"Enter your name"}
+                id={"name"}
+                name={"name"}
+                type={"text"}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
               />
               {formik.touched.name && formik.errors.name ? (
-                <div className="text-red-500">{formik.errors.name}</div>
+                <>
+                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
+                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
+                    {formik.errors.name}
+                  </div>
+                </>
               ) : null}
             </div>
           </div>
           <div className="flex flex-row items-center justify-between">
             <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              className="text-green-800 px-4 py-2"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="text-pink-500">{formik.errors.email}</div>
-            ) : null}
+            <div className="relative">
+              <Input
+                placeholder={"@gmail.com"}
+                id={"email"}
+                name={"email"}
+                type={"email"}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+
+              {formik.touched.email && formik.errors.email ? (
+                <>
+                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
+                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
+                    {formik.errors.email}
+                  </div>
+                </>
+              ) : null}
+            </div>
           </div>
           <div className="flex flex-row items-center justify-between">
             <label htmlFor="email">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="text"
-              className="text-green-800 px-4 py-2"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.firstName}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
+            <div className="relative">
+              <Input
+                placeholder={"password"}
+                id={"password"}
+                name={"password"}
+                type={"text"}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.firstName}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <>
+                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
+                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
+                    {formik.errors.password}
+                  </div>
+                </>
+              ) : null}
+            </div>
           </div>
           <div className="flex flex-row items-center justify-between">
             <label htmlFor="email">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="text"
-              className="text-green-800 px-4 py-2"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.firstName}
-            />
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <div>{formik.errors.confirmPassword}</div>
-            ) : null}
+            <div className="relative">
+              <Input
+                placeholder={"confirm password"}
+                id={"confirmPassword"}
+                name={"confirmPassword"}
+                type={"text"}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.firstName}
+              />
+              {formik.touched.confirmPassword &&
+              formik.errors.confirmPassword ? (
+                <>
+                  <div className=" border-2 border-red-500 w-52 h-1 mx-2 absolute inset-y-11 rounded-md z-30"></div>
+                  <div className="text-red-500  translate-x-52 w-52 mx-2 absolute inset-3">
+                    {formik.errors.confirmPassword}
+                  </div>
+                </>
+              ) : null}
+            </div>
           </div>
 
           <div className="">
             <button
               className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
-              type="submit">
+              type="submit"
+            >
               Sign Up
             </button>
           </div>
