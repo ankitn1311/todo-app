@@ -61,15 +61,7 @@ const Login = () => {
               <div>{formik.errors.password}</div>
             ) : null}
           </div>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="select">Age</label>
-            <select name="" id="select">
-              <option value="">Select</option>
-              <option value="30">Thirty</option>
-              <option value="20">Twenty</option>
-              <option value="10">Ten</option>
-            </select>
-          </div>
+
           <div className="">
             <button
               className="px-4 py-2 bg-teal-400 rounded-lg shadow-xl text-slate-800"

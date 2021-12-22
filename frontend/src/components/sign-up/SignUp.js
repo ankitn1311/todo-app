@@ -7,9 +7,11 @@ import { registerUser } from "../../redux/actions/auth";
 
 import Input from "../common/form/Input";
 import Paper from "../common/ui/Paper";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -31,9 +33,12 @@ const SignUp = () => {
     }),
     onSubmit: (values) => {
       console.log({ values });
-      const { confirmPassword, name, email, password } = values;
+      const { name, email, password } = values;
       const data = { name, email, password };
-      dispatch(registerUser(data));
+      const response = dispatch(registerUser(data));
+      if (response) {
+        navigate("/login");
+      }
     },
   });
   return (

@@ -1,19 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation, useMatch, useResolvedPath } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useMatch,
+  useNavigate,
+  useResolvedPath,
+} from "react-router-dom";
 import { Switch } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleDark } from "../../redux/actions/darkMode";
+import { logout } from "../../redux/actions/auth";
 
 const Navbar = () => {
   let location = useLocation();
   const { pathname } = location;
   const dispatch = useDispatch();
   const { darkMode } = useSelector((state) => state.dark);
-  console.log({ pathname });
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const toggleDarkMode = () => {
     dispatch(toggleDark());
   };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    console.log({ isAuthenticated });
+  }, [isAuthenticated]);
 
   useEffect(() => {
     if (darkMode) {
@@ -24,10 +41,10 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <nav className="bg-slate-300  dark:bg-slate-800 p-4 flex flex-row gap-10 items-center font-poppins">
+    <nav className="flex flex-row items-center gap-10 p-4 bg-slate-300 dark:bg-slate-800 font-poppins">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-10 w-10 text-teal-600 "
+        className="w-10 h-10 text-teal-600 "
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor">
@@ -40,25 +57,30 @@ const Navbar = () => {
       </svg>
 
       <div className="flex flex-row items-center justify-between w-full">
-        <ul className="p-3 flex items-center gap-5 ">
+        <ul className="flex items-center gap-5 p-3 ">
           <li
             className={`hover:text-teal-400 ${
               pathname === "/" && "text-teal-600 dark:text-teal-500"
             }`}>
             <Link to="/">Home</Link>
           </li>
-          <li
-            className={`hover:text-teal-400 ${
-              pathname === "/sign-up" && "text-teal-600 dark:text-teal-500"
-            }`}>
-            <Link to="/sign-up">Sign Up</Link>
-          </li>
-          <li
-            className={`hover:text-teal-400 ${
-              pathname === "/login" && "text-teal-600 dark:text-teal-500"
-            }`}>
-            <Link to="/login">Login</Link>
-          </li>
+          {!isAuthenticated && (
+            <>
+              <li
+                className={`hover:text-teal-400 ${
+                  pathname === "/sign-up" && "text-teal-600 dark:text-teal-500"
+                }`}>
+                <Link to="/sign-up">Sign Up</Link>
+              </li>
+              <li
+                className={`hover:text-teal-400 ${
+                  pathname === "/login" && "text-teal-600 dark:text-teal-500"
+                }`}>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
+
           <li
             className={`hover:text-teal-400 ${
               pathname === "/about" && "text-teal-600 dark:text-teal-500"
@@ -66,19 +88,22 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
         </ul>
-        <Switch
-          checked={darkMode}
-          onChange={toggleDarkMode}
-          className={`${
-            darkMode ? "bg-teal-400" : "bg-gray-800"
-          } relative inline-flex items-center h-6 rounded-full w-11`}>
-          <span className="sr-only">Enable dark mode</span>
-          <span
+        <div className="flex flex-row items-center gap-2">
+          <button onClick={handleLogout}>Logout</button>
+          <Switch
+            checked={darkMode}
+            onChange={toggleDarkMode}
             className={`${
-              darkMode ? "translate-x-6" : "translate-x-1"
-            } inline-block w-4 h-4 transform bg-teal-600 rounded-full`}
-          />
-        </Switch>
+              darkMode ? "bg-teal-400" : "bg-gray-800"
+            } relative inline-flex items-center h-6 rounded-full w-11`}>
+            <span className="sr-only">Enable dark mode</span>
+            <span
+              className={`${
+                darkMode ? "translate-x-6" : "translate-x-1"
+              } inline-block w-4 h-4 transform bg-teal-600 rounded-full`}
+            />
+          </Switch>
+        </div>
       </div>
     </nav>
   );
