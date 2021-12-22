@@ -38,12 +38,12 @@ const SignUp = () => {
   });
   return (
     <Layout sidebar={false}>
-      <div className="h-full flex items-center justify-center">
+      <div className="flex items-center justify-center h-full">
         <Paper className="p-10 rounded-lg shadow-xl">
           <form
-            className="flex flex-col gap-8 w-96"
+            className="flex flex-col gap-10 w-96"
             onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+            <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="firstName"
                 className="text-teal-700 dark:text-teal-500">
@@ -61,7 +61,7 @@ const SignUp = () => {
                 formik={formik}
               />
             </div>
-            <div className="flex flex-col gap-1 font-semibold items-start justify-between ">
+            <div className="flex flex-col items-start justify-between gap-1 font-semibold ">
               <label
                 htmlFor="email"
                 className="text-teal-700 dark:text-teal-500">
@@ -79,7 +79,7 @@ const SignUp = () => {
                 formik={formik}
               />
             </div>
-            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+            <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="email"
                 className="text-teal-700 dark:text-teal-500">
@@ -90,7 +90,7 @@ const SignUp = () => {
                 placeholder="password"
                 id="password"
                 name="password"
-                type="text"
+                type="password"
                 width="full"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -98,7 +98,7 @@ const SignUp = () => {
                 formik={formik}
               />
             </div>
-            <div className="flex flex-col gap-1 font-semibold items-start justify-between">
+            <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="email"
                 className="text-teal-700 dark:text-teal-500">
@@ -110,7 +110,7 @@ const SignUp = () => {
                 id="confirmPassword"
                 name="confirmPassword"
                 width="full"
-                type="text"
+                type="password"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
@@ -118,9 +118,9 @@ const SignUp = () => {
               />
             </div>
 
-            <div className="w-full flex items-center justify-center">
+            <div className="flex items-center justify-center w-full">
               <button
-                className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
+                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow-xl outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring-2 focus:ring-sky-500 focus:outline-none"
                 type="submit">
                 Sign Up
               </button>
