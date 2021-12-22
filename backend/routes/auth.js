@@ -36,26 +36,22 @@ router.post("/login", async (req, res) => {
   const payload = {
     user: user._id,
   };
-  await jwt.sign(
-    payload,
-    process.env.JWT_SECRET_KEY,
-    {
+
+  try {
+    const token = await jwt.sign(payload, process.env.JWT_SECRET_KEY, {
       expiresIn: "1d",
-    },
-    (err, token) => {
-      if (err) {
-        res.send({
-          success: false,
-          message: err.message,
-        });
-      }
-      res.send({
-        success: true,
-        message: "Successfully logged in",
-        token,
-      });
-    }
-  );
+    });
+    res.send({
+      success: true,
+      message: "Successfully logged in",
+      token,
+    });
+  } catch (error) {
+    return res.send({
+      success: false,
+      message: err.message,
+    });
+  }
 });
 
 module.exports = router;

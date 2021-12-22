@@ -16,7 +16,7 @@ const Input = (props) => {
       <input
         {...props}
         formik=""
-        className={`px-3 py-2 w-full shadow-sm  placeholder-gray-400 text-slate-700  disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 border-none bg-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-100 bg-transparent rounded-md  outline-none placeholder:text-xs  ${
+        className={`px-3 py-2 w-full shadow-sm  placeholder-gray-400 text-slate-700  disabled:bg-gray-50 disabled:text-gray-500 disabled:border-gray-200 border-none bg-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-100 bg-transparent rounded-md  outline-none placeholder:text-xs border-none ${
           error
             ? "bg-red-100 dark:bg-red-200"
             : "bg-slate-200 dark:bg-slate-600"

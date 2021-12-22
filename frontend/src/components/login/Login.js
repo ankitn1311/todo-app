@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import Layout from "../layout/Layout";
 import { loginUser, registerUser } from "../../redux/actions/auth";
 
+import Input from "../common/form/Input";
+import Paper from "../common/ui/Paper";
+
 const Login = () => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -28,47 +31,49 @@ const Login = () => {
   return (
     <Layout sidebar={false}>
       <div className="h-full flex items-center justify-center">
-        <form
-          className="flex flex-col gap-2 w-96"
-          onSubmit={formik.handleSubmit}>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              className="text-green-800 px-4 py-2"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div className="text-pink-500">{formik.errors.email}</div>
-            ) : null}
-          </div>
-          <div className="flex flex-row items-center justify-between">
-            <label htmlFor="email">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="text"
-              className="text-green-800 px-4 py-2"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.firstName}
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <div>{formik.errors.password}</div>
-            ) : null}
-          </div>
-          <div className="">
-            <button
-              className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
-              type="submit">
-              Login
-            </button>
-          </div>
-        </form>
+        <Paper className="p-10 rounded-lg shadown-xl">
+          <form
+            className="flex flex-col gap-2 w-96"
+            onSubmit={formik.handleSubmit}
+          >
+            <div className="flex flex-row items-center justify-between my-4">
+              <label htmlFor="email">Email Address</label>
+              <Input
+                placeholder="@mail.com"
+                id="email"
+                name="email"
+                type="email"
+                className="text-green-800 px-4 py-2"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                formik={formik}
+              />
+            </div>
+            <div className="flex flex-row items-center justify-between gap-1 my-2">
+              <label htmlFor="email">Password</label>
+              <Input
+                placeholder="Enter password"
+                id="password"
+                name="password"
+                type="text"
+                className="text-green-800 px-4 py-2"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.firstName}
+                formik={formik}
+              />
+            </div>
+            <div className="flex items-center justify-center w-full m-2">
+              <button
+                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow-xl outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </Paper>
       </div>
     </Layout>
   );

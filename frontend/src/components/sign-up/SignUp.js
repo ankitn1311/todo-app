@@ -42,11 +42,13 @@ const SignUp = () => {
         <Paper className="p-10 rounded-lg shadow-xl">
           <form
             className="flex flex-col gap-10 w-96"
-            onSubmit={formik.handleSubmit}>
+            onSubmit={formik.handleSubmit}
+          >
             <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="firstName"
-                className="text-teal-700 dark:text-teal-500">
+                className="text-teal-700 dark:text-teal-500"
+              >
                 Name
               </label>
               <Input
@@ -64,7 +66,8 @@ const SignUp = () => {
             <div className="flex flex-col items-start justify-between gap-1 font-semibold ">
               <label
                 htmlFor="email"
-                className="text-teal-700 dark:text-teal-500">
+                className="text-teal-700 dark:text-teal-500"
+              >
                 Email Address
               </label>
               <Input
@@ -82,7 +85,8 @@ const SignUp = () => {
             <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="email"
-                className="text-teal-700 dark:text-teal-500">
+                className="text-teal-700 dark:text-teal-500"
+              >
                 Password
               </label>
 
@@ -101,7 +105,8 @@ const SignUp = () => {
             <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="email"
-                className="text-teal-700 dark:text-teal-500">
+                className="text-teal-700 dark:text-teal-500"
+              >
                 Confirm Password
               </label>
 
@@ -120,8 +125,9 @@ const SignUp = () => {
 
             <div className="flex items-center justify-center w-full">
               <button
-                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow-xl outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring-2 focus:ring-sky-500 focus:outline-none"
-                type="submit">
+                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow-xl outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring-2 focus:ring-sky-500 focus:border-none"
+                type="submit"
+              >
                 Sign Up
               </button>
             </div>
