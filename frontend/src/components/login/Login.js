@@ -27,7 +27,7 @@ const Login = () => {
 
   return (
     <Layout sidebar={false}>
-      <div className="h-full flex items-center justify-center">
+      <div className="flex items-center justify-center h-full">
         <form
           className="flex flex-col gap-2 w-96"
           onSubmit={formik.handleSubmit}>
@@ -37,7 +37,7 @@ const Login = () => {
               id="email"
               name="email"
               type="email"
-              className="text-green-800 px-4 py-2"
+              className="px-4 py-2 text-green-800"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.email}
@@ -52,7 +52,7 @@ const Login = () => {
               id="password"
               name="password"
               type="text"
-              className="text-green-800 px-4 py-2"
+              className="px-4 py-2 text-green-800"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.firstName}
@@ -61,9 +61,18 @@ const Login = () => {
               <div>{formik.errors.password}</div>
             ) : null}
           </div>
+          <div className="flex flex-row items-center justify-between">
+            <label htmlFor="select">Age</label>
+            <select name="" id="select">
+              <option value="">Select</option>
+              <option value="30">Thirty</option>
+              <option value="20">Twenty</option>
+              <option value="10">Ten</option>
+            </select>
+          </div>
           <div className="">
             <button
-              className="bg-teal-400 text-slate-800 px-4 py-2 rounded-lg shadow-xl"
+              className="px-4 py-2 bg-teal-400 rounded-lg shadow-xl text-slate-800"
               type="submit">
               Login
             </button>
