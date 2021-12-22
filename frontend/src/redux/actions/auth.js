@@ -37,9 +37,42 @@ export const loginUser = (data) => {
       console.log(result);
 
       if (result.success) {
+        localStorage.setItem("token", result.token);
         dispatch({
           type: LOGIN_SUCCESS,
           payload: result.token,
+        });
+        dispatch(fetchUser());
+        return true;
+      } else {
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: result,
+        });
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const fetchUser = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.get("http://localhost:5001/api/my-details", {
+        headers: {
+          "x-auth-token": token,
+        },
+      });
+      const result = res.data;
+      console.log(result);
+
+      if (result.success) {
+        dispatch({
+          type: FETCH_USER_DATA,
+          payload: { data: result.data, token },
         });
       } else {
         dispatch({
@@ -54,6 +87,7 @@ export const loginUser = (data) => {
 };
 
 export const logout = () => {
+  localStorage.removeItem("token");
   return {
     type: LOGOUT,
   };

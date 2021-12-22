@@ -29,10 +29,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log({ isAuthenticated });
-  }, [isAuthenticated]);
-
-  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -57,39 +53,31 @@ const Navbar = () => {
       </svg>
 
       <div className="flex flex-row items-center justify-between w-full">
-        <ul className="flex items-center gap-5 p-3 ">
-          <li
-            className={`hover:text-teal-400 ${
-              pathname === "/" && "text-teal-600 dark:text-teal-500"
-            }`}>
-            <Link to="/">Home</Link>
-          </li>
-          {!isAuthenticated && (
-            <>
-              <li
-                className={`hover:text-teal-400 ${
-                  pathname === "/sign-up" && "text-teal-600 dark:text-teal-500"
-                }`}>
-                <Link to="/sign-up">Sign Up</Link>
-              </li>
-              <li
-                className={`hover:text-teal-400 ${
-                  pathname === "/login" && "text-teal-600 dark:text-teal-500"
-                }`}>
-                <Link to="/login">Login</Link>
-              </li>
-            </>
-          )}
+        {isAuthenticated && (
+          <ul className="flex items-center gap-5 p-3 ">
+            <li
+              className={`hover:text-teal-400 ${
+                pathname === "/" && "text-teal-600 dark:text-teal-500"
+              }`}>
+              <Link to="/">Home</Link>
+            </li>
+            {/* <li
+              className={`hover:text-teal-400 ${
+                pathname === "/sign-up" && "text-teal-600 dark:text-teal-500"
+              }`}>
+              <Link to="/sign-up">Sign Up</Link>
+            </li>
+            <li
+              className={`hover:text-teal-400 ${
+                pathname === "/login" && "text-teal-600 dark:text-teal-500"
+              }`}>
+              <Link to="/login">Login</Link>
+            </li> */}
+          </ul>
+        )}
 
-          <li
-            className={`hover:text-teal-400 ${
-              pathname === "/about" && "text-teal-600 dark:text-teal-500"
-            }`}>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
         <div className="flex flex-row items-center gap-2">
-          <button onClick={handleLogout}>Logout</button>
+          {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
           <Switch
             checked={darkMode}
             onChange={toggleDarkMode}

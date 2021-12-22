@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "../layout/Layout";
-import { loginUser, registerUser } from "../../redux/actions/auth";
+import { loginUser } from "../../redux/actions/auth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated]);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -19,9 +30,13 @@ const Login = () => {
         .max(20, "Must be 20 characters or less")
         .required("Required"),
     }),
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       console.log({ values });
-      dispatch(loginUser(values));
+      const response = await dispatch(loginUser(values));
+      console.log("resonse", response);
+      if (response) {
+        navigate("/");
+      }
     },
   });
 
@@ -62,11 +77,17 @@ const Login = () => {
             ) : null}
           </div>
 
-          <div className="">
+          <div className="flex items-center justify-center w-full">
             <button
               className="px-4 py-2 bg-teal-400 rounded-lg shadow-xl text-slate-800"
               type="submit">
               Login
+            </button>
+          </div>
+          <div className="flex items-center justify-center w-full">
+            Don't have a account?
+            <button type="button" onClick={() => navigate("/sign-up")}>
+              Sign Up
             </button>
           </div>
         </form>

@@ -44,7 +44,9 @@ const auth = (state = initialState, action) => {
     case FETCH_USER_DATA:
       return {
         ...state,
-        user: payload,
+        isAuthenticated: true,
+        user: payload.data,
+        token: payload.token,
       };
     default:
       return state;
