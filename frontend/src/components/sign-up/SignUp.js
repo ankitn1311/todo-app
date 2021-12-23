@@ -125,9 +125,21 @@ const SignUp = () => {
 
             <div className="flex items-center justify-center w-full">
               <button
-                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow-xl outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring-2 focus:ring-sky-500 focus:outline-none"
+                className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring focus:ring-sky-500 focus:outline-none"
                 type="submit">
                 Sign Up
+              </button>
+            </div>
+
+            <div className="flex items-center justify-center w-full gap-2">
+              <span className="text-md text-slate-700 dark:text-slate-300">
+                Already a user?
+              </span>
+              <button
+                type="button"
+                className="font-bold text-blue-500 hover:text-blue-400"
+                onClick={() => navigate("/login")}>
+                Sign In
               </button>
             </div>
           </form>

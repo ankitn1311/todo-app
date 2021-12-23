@@ -44,12 +44,12 @@ router.post("/login", async (req, res) => {
     },
     (err, token) => {
       if (err) {
-        res.send({
+        return res.send({
           success: false,
           message: err.message,
         });
       }
-      res.send({
+      return res.send({
         success: true,
         message: "Successfully logged in",
         token,
