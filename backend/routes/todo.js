@@ -6,7 +6,7 @@ const route = express.Router();
 
 route.get("/todos", verifyUser, async (req, res) => {
   try {
-    const todos = await Todo.find({ user: req.user._id });
+    const todos = await Todo.find({ user: req.user._id }).populate("user","name email");
     console.log("todos", todos);
     res.status(200).json({
       success: true,

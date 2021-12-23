@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 const verifyUser = require("../middleware/verify-user");
 
 router.get("/my-details", verifyUser, async (req, res) => {
-  console.log("hello");
   res.status(200).json({
     success: true,
     data: req.user,

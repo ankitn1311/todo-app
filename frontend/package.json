@@ -23,7 +23,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "dev" :"concurrently \"npm run start\" \"cd ../backend && npm run dev\"" ,
+    "dev": "concurrently \"npm run start\" \"cd ../backend && npm run dev\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
