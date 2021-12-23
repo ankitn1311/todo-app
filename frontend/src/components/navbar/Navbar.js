@@ -59,7 +59,7 @@ const Navbar = () => {
               className={`hover:text-teal-400 ${
                 pathname === "/" && "text-teal-600 dark:text-teal-500"
               }`}>
-              <Link to="/">Home</Link>
+              <Link to="/">Todos</Link>
             </li>
             {/* <li
               className={`hover:text-teal-400 ${

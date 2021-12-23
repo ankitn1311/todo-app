@@ -6,6 +6,7 @@ import Layout from "./components/layout/Layout";
 import Login from "./components/login/Login";
 import PrivateRoute from "./components/routes/private-route/PrivateRoute";
 import SignUp from "./components/sign-up/SignUp";
+import TodoList from "./components/todo-list/TodoList";
 import { fetchUser } from "./redux/actions/auth";
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
           element={
             <PrivateRoute>
               <Layout sidebar={true}>
-                <div>Hello from home</div>
+                <TodoList />
               </Layout>
             </PrivateRoute>
           }
