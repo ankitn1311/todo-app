@@ -9,7 +9,7 @@ const TodoList = () => {
 
   return <>
     <form>
-      <input />
+      <input type='text'/>
     </form>
   </>;
 };
