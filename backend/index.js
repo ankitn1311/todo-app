@@ -16,10 +16,21 @@ app.use("/api/", authRoute);
 app.use("/api/", userRoute);
 app.use("/api/", todoRoute);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log("Server running on port ", PORT);
 });
 
-process.on("SIGTERM", () => {
-  process.exit(0);
+process.on("unhandledRejection", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
+process.on("uncaughtException", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Uncaught Exception`);
+  process.exit(1);
 });

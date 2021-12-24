@@ -9,7 +9,7 @@ export const FETCH_USER_DATA = "FETCH_USER_DATA";
 export const registerUser = (data) => {
   return async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:5001/api/register", data);
+      const res = await axios.post("/api/register", data);
       const result = res.data;
       console.log(result);
       if (result.success) {
@@ -32,7 +32,7 @@ export const registerUser = (data) => {
 export const loginUser = (data) => {
   return async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:5001/api/login", data);
+      const res = await axios.post("/api/login", data);
       const result = res.data;
       console.log(result);
 
@@ -60,7 +60,7 @@ export const fetchUser = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("http://localhost:5001/api/my-details", {
+      const res = await axios.get("/api/my-details", {
         headers: {
           "x-auth-token": token,
         },
