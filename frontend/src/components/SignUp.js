@@ -3,10 +3,10 @@ import * as Yup from "yup";
 import React from "react";
 import Layout from "../layout/Layout";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../redux/actions/auth";
+import { registerUser } from "../redux/actions/auth";
 
-import Input from "../common/form/Input";
-import Paper from "../common/ui/Paper";
+import Input from "./common/form/Input";
+import Paper from "./common/ui/Paper";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {

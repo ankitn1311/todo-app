@@ -37,12 +37,11 @@ export const loginUser = (data) => {
       console.log(result);
 
       if (result.success) {
-        localStorage.setItem("token", result.token);
-        dispatch({
+        await dispatch({
           type: LOGIN_SUCCESS,
           payload: result.token,
         });
-        dispatch(fetchUser());
+        await dispatch(fetchUser());
         return true;
       } else {
         dispatch({

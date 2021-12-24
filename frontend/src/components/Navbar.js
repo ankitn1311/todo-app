@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import { Switch } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleDark } from "../../redux/actions/darkMode";
-import { logout } from "../../redux/actions/auth";
+import { toggleDark } from "../redux/actions/darkMode";
+import { logout } from "../redux/actions/auth";
 
 const Navbar = () => {
   let location = useLocation();
@@ -37,7 +37,7 @@ const Navbar = () => {
   }, [darkMode]);
 
   return (
-    <nav className="flex flex-row items-center gap-10 p-4 bg-slate-300 dark:bg-slate-800 font-poppins">
+    <nav className="flex flex-row items-center gap-10 p-4 bg-slate-200 dark:bg-slate-800 font-poppins">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-10 h-10 text-teal-600 "

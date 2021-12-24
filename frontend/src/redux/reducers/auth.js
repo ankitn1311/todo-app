@@ -25,6 +25,7 @@ const auth = (state = initialState, action) => {
         ...state,
       };
     case LOGIN_SUCCESS:
+      localStorage.setItem("token", payload);
       return {
         ...state,
         isAuthenticated: true,

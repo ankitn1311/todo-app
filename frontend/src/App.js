@@ -26,7 +26,7 @@ function App() {
   }, []);
 
   return (
-    <div className="h-screen bg-slate-400 dark:bg-slate-900 text-gray-900 dark:text-gray-400 dark:bg-[url('./assets/images/background.jpg')] bg-cover">
+    <div className="h-screen bg-slate-300 dark:bg-slate-900 text-gray-900 dark:text-gray-400 dark:bg-[url('./assets/images/background.jpg')] bg-cover ">
       <Routes>
         <Route
           path="/"

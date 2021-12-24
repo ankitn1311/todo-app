@@ -4,10 +4,10 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 
 import Layout from "../layout/Layout";
-import { loginUser } from "../../redux/actions/auth";
+import { loginUser } from "../redux/actions/auth";
 import { useNavigate } from "react-router-dom";
-import Paper from "../common/ui/Paper";
-import Input from "../common/form/Input";
+import Paper from "./common/ui/Paper";
+import Input from "./common/form/Input";
 
 const Login = () => {
   const dispatch = useDispatch();

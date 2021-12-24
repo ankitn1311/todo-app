@@ -3,8 +3,9 @@ const User = require("../models/Users");
 
 module.exports = async function (req, res, next) {
   const token = req.header("x-auth-token");
-  if (!token) {
-    return res.status(301).json({
+  if (token === "null") {
+    console.log("token", token);
+    return res.status(203).json({
       success: false,
       message: "No token, authorization failed.",
     });
@@ -13,7 +14,7 @@ module.exports = async function (req, res, next) {
   try {
     const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
     if (!data.user) {
-      return res.status(301).json({
+      return res.status(401).json({
         success: false,
         message: "Invalid token.",
       });
