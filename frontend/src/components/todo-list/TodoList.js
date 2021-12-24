@@ -14,9 +14,9 @@ const TodoList = () => {
 
   return (
     <div className="flex items-start justify-center h-full p-4">
-      <Paper className="w-full px-6 py-6 rounded-xl sm:w-1/2 lg:w-1/3 xl:w-1/4">
+      <Paper className="w-full overflow-hidden rounded-xl sm:w-1/2 lg:w-1/3 xl:w-1/3">
         <form
-          className="flex flex-col gap-1"
+          className="flex flex-col items-end gap-6 p-6 bg-teal-500/30"
           onSubmit={(e) => {
             e.preventDefault();
             console.log("clicked");
@@ -44,9 +44,13 @@ const TodoList = () => {
             // value={formik.values.firstName}
             // formik={formik}
           />
-          <button type="submit"></button>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-teal-800 rounded-lg text-slate-50 dark:text-slate-200 dark:bg-slate-800 hover:bg-slate-700 ">
+            Add
+          </button>
         </form>
-        <div className="flex flex-col mt-3 divide-y-1 divide-slate-700">
+        <div className="flex flex-col divide-y-1 divide-slate-700">
           {todos.map((todo) => (
             <Todo todo={todo} />
           ))}
