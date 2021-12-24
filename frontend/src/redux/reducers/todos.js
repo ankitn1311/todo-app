@@ -1,8 +1,9 @@
 
-import { CREATE_TODO, GET_TODOS, DELETE_TODO, UPDATE_TODO } from "../actions/todos";
+import { CREATE_TODO, GET_TODOS, DELETE_TODO, UPDATE_TODO, SET_CURRENT, CLEAR_CURRENT } from "../actions/todos";
 
 const initialState = {
-  todos: []
+  todos: [],
+  currentTodo: null,
 };
 
 const todosReducer = (state = initialState, action) => {
@@ -30,6 +31,18 @@ const todosReducer = (state = initialState, action) => {
       return {
         ...state,
         todos: state.todos.map((todo) => todo._id === payload._id ? payload : todo)
+      }
+
+    case SET_CURRENT:
+      return {
+        ...state,
+        currentTodo: payload
+      }
+
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        currentTodo: null
       }
     default:
       return state;
