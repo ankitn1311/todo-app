@@ -3,9 +3,10 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 
-import Layout from "../layout/Layout";
 import { loginUser } from "../redux/actions/auth";
 import { useNavigate } from "react-router-dom";
+
+import Layout from "./common/ui/Layout";
 import Paper from "./common/ui/Paper";
 import Input from "./common/form/Input";
 

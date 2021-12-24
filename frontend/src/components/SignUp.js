@@ -1,10 +1,10 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import React from "react";
-import Layout from "../layout/Layout";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../redux/actions/auth";
 
+import Layout from "./common/ui/Layout";
 import Input from "./common/form/Input";
 import Paper from "./common/ui/Paper";
 import { useNavigate } from "react-router-dom";

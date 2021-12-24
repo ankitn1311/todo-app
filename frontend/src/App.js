@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
-import Layout from "./components/layout/Layout";
-import Login from "./components/login/Login";
-import PrivateRoute from "./components/routes/private-route/PrivateRoute";
-import SignUp from "./components/sign-up/SignUp";
+import Layout from "./components/common/ui/Layout";
+import Login from "./components/Login";
+import PrivateRoute from "./components/routes/PrivateRoute";
+import SignUp from "./components/SignUp";
 import TodoList from "./components/todo-list/TodoList";
 import { fetchUser } from "./redux/actions/auth";
 
