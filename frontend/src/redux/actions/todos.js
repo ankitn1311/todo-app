@@ -3,6 +3,9 @@ export const GET_TODOS = "GET_TODOS";
 export const CREATE_TODO = "CREATE_TODO";
 export const DELETE_TODO = "DELETE_TODO";
 export const UPDATE_TODO = "UPDATE_TODO";
+export const SET_CURRENT = "SET_CURRENT";
+export const CLEAR_CURRENT = "CLEAR_CURRENT";
+
 export const getTodos = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
@@ -68,7 +71,7 @@ export const updateTodo = (data) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.put(`/api/todos/${data._id}`, data, {
+      const res = await axios.patch(`/api/todos/${data._id}`, { title: data.title, description: data.description }, {
         headers: {
           "x-auth-token": token,
         },
@@ -84,3 +87,16 @@ export const updateTodo = (data) => {
     }
   };
 };
+
+export const setCurrentTodo = (data) => {
+  return {
+    type: SET_CURRENT,
+    payload: data,
+  }
+}
+
+export const clearCurrentTodo = () => {
+  return {
+    type: CLEAR_CURRENT,
+  }
+}
