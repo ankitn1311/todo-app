@@ -23,7 +23,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "dev": "concurrently \"react-scripts start\" \"cd ../backend && nodemon --delay 500ms index.js\"",
+    "dev": "concurrently \"react-scripts start\" \"cd ../ && nodemon --delay 500ms index.js\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
