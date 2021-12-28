@@ -43,11 +43,9 @@ const SignUp = () => {
   });
   return (
     <Layout sidebar={false}>
-      <div className="flex items-center justify-center h-full">
-        <Paper className="p-10 rounded-lg shadow-xl">
-          <form
-            className="flex flex-col gap-10 w-96"
-            onSubmit={formik.handleSubmit}>
+      <div className="flex items-center justify-center h-full p-3">
+        <Paper className="w-full max-w-lg p-10 rounded-lg shadow-xl">
+          <form className="flex flex-col gap-10" onSubmit={formik.handleSubmit}>
             <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
                 htmlFor="firstName"

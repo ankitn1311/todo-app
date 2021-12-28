@@ -43,13 +43,13 @@ const Login = () => {
 
   return (
     <Layout sidebar={false}>
-      <div className="flex items-center justify-center h-full">
-        <Paper className="p-10 rounded-lg shadow-xl">
+      <div className="flex items-center justify-center w-full h-full p-3">
+        <Paper className="flex flex-col items-center justify-center w-full max-w-lg p-10 rounded-lg shadow-xl">
           <h3 className="mb-5 text-xl font-semibold text-center text-gray-500 dark:text-gray-300">
             Welcome Back!
           </h3>
           <form
-            className="flex flex-col gap-10 w-96"
+            className="flex flex-col w-full gap-6"
             onSubmit={formik.handleSubmit}>
             <div className="flex flex-col items-start justify-between gap-1 font-semibold">
               <label
