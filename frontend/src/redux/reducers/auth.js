@@ -5,17 +5,24 @@ import {
   LOGIN_FAIL,
   FETCH_USER_DATA,
   LOGOUT,
+  LOADING,
 } from "../actions/auth";
 
 const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
+  loading: false,
 };
 
 const auth = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: payload,
+      };
     case REGISTER_SUCCESS:
       return {
         ...state,

@@ -1,4 +1,5 @@
 import axios from "axios";
+export const LOADING = "LOADING";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -58,6 +59,7 @@ export const loginUser = (data) => {
 
 export const fetchUser = () => {
   return async (dispatch) => {
+    dispatch({ type: LOADING, payload: true });
     const token = localStorage.getItem("token");
     try {
       const res = await axios.get("/api/my-details", {
@@ -79,8 +81,10 @@ export const fetchUser = () => {
           payload: result,
         });
       }
+      dispatch({ type: LOADING, payload: false });
     } catch (error) {
       console.log(error);
+      dispatch({ type: LOADING, payload: false });
     }
   };
 };

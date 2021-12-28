@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loginUser } from "../redux/actions/auth";
+import { LOADING, loginUser } from "../redux/actions/auth";
 import { useNavigate } from "react-router-dom";
 
 import Layout from "./common/ui/Layout";
@@ -14,13 +14,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -34,9 +30,11 @@ const Login = () => {
         .required("Required"),
     }),
     onSubmit: async (values) => {
+      setButtonLoading(true);
       console.log({ values });
       const response = await dispatch(loginUser(values));
       console.log("resonse", response);
+      setButtonLoading(false);
       if (response) {
         navigate("/");
       }
@@ -95,7 +93,7 @@ const Login = () => {
               <button
                 className="px-4 py-2 text-sm font-bold tracking-wide uppercase bg-teal-400 rounded-lg shadow outline-none text-slate-800 active:bg-teal-600 hover:bg-teal-500 focus:ring focus:ring-sky-500 focus:outline-none"
                 type="submit">
-                Login
+                {buttonLoading ? "Loading..." : "Login"}
               </button>
             </div>
             <div className="flex items-center justify-center w-full gap-2">

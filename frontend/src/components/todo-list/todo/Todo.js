@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearCurrentTodo,
@@ -9,14 +10,18 @@ import {
 const Todo = ({ todo, changeValues }) => {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
-    dispatch(clearCurrentTodo());
-    dispatch(deleteTodo(todo._id));
+  const [todoLoading, setTodoLoading] = useState("");
+
+  const handleDelete = async () => {
+    setTodoLoading("DELETE");
+    await dispatch(clearCurrentTodo());
+    await dispatch(deleteTodo(todo._id));
+    setTodoLoading("");
   };
 
-  const handleEdit = () => {
-    changeValues({ title: todo.title, description: todo.description });
-    dispatch(setCurrentTodo(todo));
+  const handleEdit = async () => {
+    await changeValues({ title: todo.title, description: todo.description });
+    await dispatch(setCurrentTodo(todo));
   };
   return (
     <div className="flex flex-row items-center justify-between gap-4 p-6 ">
@@ -30,7 +35,7 @@ const Todo = ({ todo, changeValues }) => {
         <button
           className="tracking-widest text-red-700 uppercase hover:text-red-500 dark:text-red-400 dark:hover:text-red-300"
           onClick={handleDelete}>
-          delete
+          {todoLoading === "DELETE" ? "deleting..." : "delete"}
         </button>
         <button
           className="tracking-widest text-teal-800 uppercase hover:text-teal-500 dark:text-teal-400 dark:hover:text-teal-300"
