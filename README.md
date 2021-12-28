@@ -1,6 +1,8 @@
 # todo-app
 Todo app using MERN stack
 
+Live on heroku - https://salty-fortress-55388.herokuapp.com/
+
 # Library used till now
 * Backend
   - express
