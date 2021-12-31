@@ -10,14 +10,14 @@ router.get("/my-details", verifyUser, async (req, res) => {
     success: true,
     data: req.user,
   });
+
 });
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
   const user = await User.findOne({ email });
   if (!user) {
-    return res.status(401).send({
+    return res.status(200).send({
       success: false,
       message: "No user with this email found",
     });
@@ -26,7 +26,7 @@ router.post("/login", async (req, res) => {
   const result = await bcrypt.compare(password, user.password);
 
   if (!result) {
-    return res.status(401).send({
+    return res.status(200).send({
       success: false,
       message: "Password is incorrect",
     });

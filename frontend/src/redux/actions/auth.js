@@ -34,8 +34,9 @@ export const loginUser = (data) => {
   return async (dispatch) => {
     try {
       const res = await axios.post("/api/login", data);
+
       const result = res.data;
-      console.log(result);
+      console.log({ result, res });
 
       if (result.success) {
         await dispatch({
