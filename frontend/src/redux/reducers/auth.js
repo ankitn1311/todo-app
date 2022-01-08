@@ -38,11 +38,12 @@ const auth = (state = initialState, action) => {
         ...state,
         isAuthenticated: true,
         token: payload,
+        error: "",
       };
     case LOGIN_FAIL:
       return {
         ...state,
-        errorMessage: payload
+        error: payload.message,
       };
     case LOGOUT:
       return {
