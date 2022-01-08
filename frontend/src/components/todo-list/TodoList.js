@@ -13,7 +13,7 @@ import Input from "../common/form/Input";
 import Paper from "../common/ui/Paper";
 import Todo from "./todo/Todo";
 const TodoList = () => {
-  const { todos, currentTodo } = useSelector((state) => state.todos);
+  const { todos, currentTodo, loadMore } = useSelector((state) => state.todos);
 
   const [initialValues, setInitialValues] = useState({
     title: "",
@@ -21,11 +21,17 @@ const TodoList = () => {
   });
 
   const [todoLoading, setTodoLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getTodos());
-  }, []);
+    dispatch(getTodos(page));
+  }, [page]);
+
+  const loadMoreTodos = () => {
+    setPage((prev) => prev + 1);
+  };
 
   const formik = useFormik({
     initialValues,
@@ -94,8 +100,15 @@ const TodoList = () => {
         </form>
         <div className="flex flex-col divide-y-1 divide-slate-300 dark:divide-slate-700">
           {todos.map((todo) => (
-            <Todo todo={todo} changeValues={setInitialValues} />
+            <Todo key={todo._id} todo={todo} changeValues={setInitialValues} />
           ))}
+          {loadMore && (
+            <button
+              onClick={loadMoreTodos}
+              className="flex items-center justify-center px-4 py-2 text-xs font-bold uppercase bg-teal-800 rounded-lg rounded-t-none text-slate-50 dark:text-slate-200 dark:bg-slate-800 hover:bg-slate-700 disabled:bg-slate-600">
+              load more..
+            </button>
+          )}
         </div>
       </Paper>
     </div>

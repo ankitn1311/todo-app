@@ -6,11 +6,11 @@ export const UPDATE_TODO = "UPDATE_TODO";
 export const SET_CURRENT = "SET_CURRENT";
 export const CLEAR_CURRENT = "CLEAR_CURRENT";
 
-export const getTodos = () => {
+export const getTodos = (page) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("/api/todos", {
+      const res = await axios.get(`/api/todos?page=${page}`, {
         headers: {
           "x-auth-token": token,
         },
@@ -48,8 +48,9 @@ export const createTodo = (data) => {
   };
 };
 
-export const deleteTodo = async (data) => {
+export const deleteTodo = (data) => {
   return async (dispatch) => {
+    console.log("Deleting todo");
     const token = localStorage.getItem("token");
     try {
       await axios.delete(`/api/todos/${data}`, {
@@ -64,18 +65,22 @@ export const deleteTodo = async (data) => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 };
 
 export const updateTodo = (data) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     try {
-      const res = await axios.patch(`/api/todos/${data._id}`, { title: data.title, description: data.description }, {
-        headers: {
-          "x-auth-token": token,
-        },
-      });
+      const res = await axios.patch(
+        `/api/todos/${data._id}`,
+        { title: data.title, description: data.description },
+        {
+          headers: {
+            "x-auth-token": token,
+          },
+        }
+      );
 
       const updatedTodo = res.data.data;
       dispatch({
@@ -92,11 +97,11 @@ export const setCurrentTodo = (data) => {
   return {
     type: SET_CURRENT,
     payload: data,
-  }
-}
+  };
+};
 
 export const clearCurrentTodo = () => {
   return {
     type: CLEAR_CURRENT,
-  }
-}
+  };
+};
