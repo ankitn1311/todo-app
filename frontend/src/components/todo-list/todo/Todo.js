@@ -14,8 +14,8 @@ const Todo = ({ todo, changeValues }) => {
 
   const handleDelete = async () => {
     setTodoLoading("DELETE");
-    await dispatch(clearCurrentTodo());
-    await dispatch(deleteTodo(todo._id));
+     dispatch(clearCurrentTodo());
+    dispatch(deleteTodo(todo._id));
     setTodoLoading("");
   };
 

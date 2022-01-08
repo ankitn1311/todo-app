@@ -48,7 +48,7 @@ export const createTodo = (data) => {
   };
 };
 
-export const deleteTodo = (data) => {
+export const deleteTodo = async (data) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     try {
@@ -64,7 +64,7 @@ export const deleteTodo = (data) => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }
 };
 
 export const updateTodo = (data) => {

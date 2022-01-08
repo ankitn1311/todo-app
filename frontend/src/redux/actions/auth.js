@@ -34,8 +34,8 @@ export const loginUser = (data) => {
   return async (dispatch) => {
     try {
       const res = await axios.post("/api/login", data);
-      const result = res.data;
-      console.log(result);
+      const result = await res.data;
+      console.log({res});
 
       if (result.success) {
         await dispatch({
@@ -44,15 +44,14 @@ export const loginUser = (data) => {
         });
         await dispatch(fetchUser());
         return true;
-      } else {
-        dispatch({
-          type: LOGIN_FAIL,
-          payload: result,
-        });
-        return false;
       }
     } catch (error) {
-      console.log(error);
+      console.log({error});
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: error.response.data,
+      });
+      return false;
     }
   };
 };

@@ -14,47 +14,51 @@ router.get("/my-details", verifyUser, async (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
-  const user = await User.findOne({ email });
-  if (!user) {
-    return res.status(401).send({
-      success: false,
-      message: "No user with this email found",
-    });
-  }
-
-  const result = await bcrypt.compare(password, user.password);
-
-  if (!result) {
-    return res.status(401).send({
-      success: false,
-      message: "Password is incorrect",
-    });
-  }
-
-  const payload = {
-    user: user._id,
-  };
-  await jwt.sign(
-    payload,
-    process.env.JWT_SECRET_KEY,
-    {
-      expiresIn: "1d",
-    },
-    (err, token) => {
-      if (err) {
-        return res.send({
-          success: false,
-          message: err.message,
-        });
-      }
-      return res.send({
-        success: true,
-        message: "Successfully logged in",
-        token,
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).send({
+        success: false,
+        message: "No user with this email found",
       });
     }
-  );
+    const result = await bcrypt.compare(password, user.password);
+
+    if (!result) {
+      return res.status(400).json({
+        success: false,
+        message: "Password is incorrect",
+      });
+    }
+
+    const payload = {
+      user: user._id,
+    };
+    await jwt.sign(
+      payload,
+      process.env.JWT_SECRET_KEY,
+      {
+        expiresIn: "1d",
+      },
+      (err, token) => {
+        if (err) {
+          return res.status(400).json({
+            success: false,
+            message: err.message,
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          message: "Successfully logged in",
+          token,
+        });
+      }
+    );
+
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({success: false, message: 'Server error'})
+  }
 });
 
 module.exports = router;

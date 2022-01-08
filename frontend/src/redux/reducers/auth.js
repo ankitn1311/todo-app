@@ -13,6 +13,7 @@ const initialState = {
   user: null,
   token: null,
   loading: false,
+  errorMessage: {}
 };
 
 const auth = (state = initialState, action) => {
@@ -41,6 +42,7 @@ const auth = (state = initialState, action) => {
     case LOGIN_FAIL:
       return {
         ...state,
+        errorMessage: payload
       };
     case LOGOUT:
       return {
