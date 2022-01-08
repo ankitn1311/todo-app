@@ -15,7 +15,7 @@ function App() {
   const { isAuthenticated, loading } = useSelector((state) => state.auth);
 
   const checkUser = async () => {
-    await dispatch(fetchUser());
+    isAuthenticated && await dispatch(fetchUser());
   };
 
   useEffect(() => {

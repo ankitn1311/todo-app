@@ -13,6 +13,7 @@ const initialState = {
   user: null,
   token: null,
   loading: false,
+  errorMessage: {}
 };
 
 const auth = (state = initialState, action) => {

@@ -45,15 +45,14 @@ export const loginUser = (data) => {
         });
         await dispatch(fetchUser());
         return true;
-      } else {
-        dispatch({
-          type: LOGIN_FAIL,
-          payload: result,
-        });
-        return false;
       }
     } catch (error) {
-      console.log(error);
+      console.log({error});
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: error.response.data,
+      });
+      return false;
     }
   };
 };

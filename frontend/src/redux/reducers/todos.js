@@ -4,6 +4,7 @@ import { CREATE_TODO, GET_TODOS, DELETE_TODO, UPDATE_TODO, SET_CURRENT, CLEAR_CU
 const initialState = {
   todos: [],
   currentTodo: null,
+  loading: false,
 };
 
 const todosReducer = (state = initialState, action) => {
