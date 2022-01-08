@@ -4,10 +4,35 @@ const verifyUser = require("../middleware/verify-user");
 const Todo = require("../models/Todos");
 const route = express.Router();
 
+
 route.get("/todos", verifyUser, async (req, res) => {
+  console.log("page hit")
+  let {page} = req.query;
+  page = parseInt(page);
+  try {
+    if(!page){
+      page = 1;
+    }
+    const skip = (page-1) * 3;
+    const todos = await Todo.find({user: req.user._id}).limit(3).skip(skip).populate("user","name email");
+    res.status(200).json({
+      success: true,
+      data: todos,
+    });
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+    });
+  }
+});
+
+route.get("/todos", verifyUser, async (req, res) => {
+  console.log("normal hit")
   try {
     const todos = await Todo.find({ user: req.user._id }).populate("user","name email");
-    console.log("todos", todos);
+    // console.log("todos", todos);
     res.status(200).json({
       success: true,
       data: todos,
@@ -19,6 +44,8 @@ route.get("/todos", verifyUser, async (req, res) => {
     });
   }
 });
+
+
 
 route.post("/todos", verifyUser, async (req, res) => {
   try {
