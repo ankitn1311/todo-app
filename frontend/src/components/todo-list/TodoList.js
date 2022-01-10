@@ -60,7 +60,7 @@ const TodoList = () => {
   });
 
   return (
-    <div className="flex items-start justify-center h-full p-4">
+    <div className="flex items-start justify-center h-full p-4 mb-4">
       <Paper className="w-full overflow-hidden rounded-xl sm:w-1/2 lg:w-1/3 xl:w-1/3">
         <form
           className="flex flex-col items-end gap-6 p-6 bg-teal-500/30"
